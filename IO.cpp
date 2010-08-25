@@ -1,4 +1,5 @@
 #include "G.h"
+#include "Bash.h"
 
 IO::IO(QWidget* parent) : QMainWindow(parent)
 {
@@ -42,6 +43,33 @@ void IO::construct()
   m_in->setFocus();
 }
 
+void IO::handleUserCommand(QString& cmd)
+{
+  cmd = cmd.mid(1);
+
+  QString param;
+  int upto = cmd.indexOf(' ');
+  if (upto > -1) {
+    param = cmd.mid(upto+1);
+    cmd = cmd.left(upto);
+  }
+
+  if (cmd == "CD") {
+    // Bash Cooldown
+    bool ok;
+    uint cd = param.toUInt(&ok);
+    if (!ok)
+      G::gui->display("Setting bash CD failed.", IO::ERROR);
+    else {
+      Bash::setCooldown(cd);
+      QByteArray msg = "PRIVMSG " + G::channel + " :Bash cooldown sets to ";
+      msg.append( cmd.setNum(cd) );
+      msg.append(" sec.");
+      G::con->send(msg);
+    }
+  }
+}
+
 void IO::display(const QString& str, TYPE type)
 {
   QString q;
@@ -68,7 +96,11 @@ void IO::handleInput()
   if ( !text.length() )
     return;
 
-  G::con->send( text.toUtf8() );
+  if ( text.startsWith('.') )
+    handleUserCommand(text);
+  else
+    G::con->send( text.toUtf8() );
+
   m_in->clear();
 }
 

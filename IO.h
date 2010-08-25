@@ -31,6 +31,7 @@ private:
   QTextEdit* m_out;
 
   void construct();
+  void handleUserCommand(QString&);
 
 public:
   IO(QWidget* = 0);

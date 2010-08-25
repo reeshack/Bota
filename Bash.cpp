@@ -3,7 +3,7 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
 
-const uint Bash::COOLDOWN = 20;
+uint Bash::m_cooldown = 300;
 
 Bash::Bash(const QByteArray& sender) : AbstractWeb("http://bash.org/?random1", sender)
 {
@@ -25,6 +25,12 @@ Bash::Bash(const QByteArray& sender) : AbstractWeb("http://bash.org/?random1", s
   } else {
     start();  // Let's the game begin!
   }
+}
+
+void Bash::setCooldown(uint& cd)
+{
+  m_cooldown = cd;
+  m_time = 0;
 }
 
 void Bash::replyFinished(QNetworkReply* reply)
@@ -91,7 +97,7 @@ void Bash::replyFinished(QNetworkReply* reply)
   // Output the link
   G::con->send("PRIVMSG " + G::channel + " :-- " + link + " --");
 
-  m_time = now() + COOLDOWN;
+  m_time = now() + m_cooldown;
 }
 
 Quote::Quote(const QByteArray& value, const uint& score, const uint& id) : value(value), score(score), id(id)

@@ -6,12 +6,13 @@
 class Bash : public AbstractWeb
 {
 private:
-  static const uint COOLDOWN;
+  static uint m_cooldown;
 
   void replyFinished(QNetworkReply*);
 
 public:
   Bash(const QByteArray&);
+  static void setCooldown(uint&);
 };
 
 class Quote
