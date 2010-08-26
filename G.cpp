@@ -4,4 +4,4 @@ Connection* G::con = NULL;
 IO*         G::gui = NULL;
 
 QByteArray  G::nick    = "bashoid";   // default nick
-QByteArray  G::channel = "#valhalla"; // default channel
+QByteArray  G::channel = "#valhalla"; // autojoin to this channel

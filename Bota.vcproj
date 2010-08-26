@@ -126,6 +126,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="$(QTDIR)\lib\QtCore4.lib $(QTDIR)\lib\QtGui4.lib $(QTDIR)\lib\QtNetwork4.lib"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -213,6 +214,17 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing AbstractWeb.h"
+						CommandLine="$(QTDIR)\bin\moc.exe AbstractWeb.h -o tmp\moc_AbstractWeb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc_AbstractWeb.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing AbstractWeb.h"
 						CommandLine="$(QTDIR)\bin\moc.exe AbstractWeb.h -o tmp\moc_AbstractWeb.cpp"
 						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
 						Outputs="tmp\moc_AbstractWeb.cpp"
@@ -233,6 +245,17 @@
 						Outputs="tmp\moc_Connection.cpp"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing Connection.h"
+						CommandLine="$(QTDIR)\bin\moc.exe Connection.h -o tmp\moc_Connection.cpp"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc_Connection.cpp"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\G.h"
@@ -248,6 +271,17 @@
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing IO.h"
 						CommandLine="$(QTDIR)\bin\moc.exe IO.h -o tmp\moc_IO.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="tmp\moc_IO.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing IO.h"
+						CommandLine="$(QTDIR)\bin\moc.exe IO.h -o tmp\moc_IO.cpp"
 						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
 						Outputs="tmp\moc_IO.cpp"
 					/>

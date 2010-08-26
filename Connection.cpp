@@ -73,7 +73,6 @@ void Connection::login()
 
 void Connection::quit()
 {
-  // Disconnect and dealloc
   G::gui->display("Disconnected.");
   m_socket->close();
 }

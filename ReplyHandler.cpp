@@ -15,10 +15,10 @@ void ReplyHandler::handle(QByteArray& message)
 
     // Bash
     if (reply.target == G::channel && reply.params == "bash") {
-      // TODO dealloc
-      Bash* b = new Bash(reply.author);
+      new Bash(reply.author);
     }
 
+    // Help
     else if (reply.target == G::nick && reply.params == "help") {
       QByteArray header = "PRIVMSG " + reply.author + " :";
       G::con->send(header + "Tyhle prikazy umim:");

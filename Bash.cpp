@@ -22,8 +22,14 @@ Bash::Bash(const QByteArray& sender) : AbstractWeb("http://bash.org/?random1", s
     msg.append(" sekund.");
     G::con->send(msg);
 
+    deleteLater();
+
   } else {
-    start();  // Let's the game begin!
+
+    // Let's the game begin!
+    m_time = now() + m_cooldown;
+    start();
+
   }
 }
 
@@ -97,7 +103,7 @@ void Bash::replyFinished(QNetworkReply* reply)
   // Output the link
   G::con->send("PRIVMSG " + G::channel + " :-- " + link + " --");
 
-  m_time = now() + m_cooldown;
+  deleteLater();
 }
 
 Quote::Quote(const QByteArray& value, const uint& score, const uint& id) : value(value), score(score), id(id)
