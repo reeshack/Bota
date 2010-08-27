@@ -6,14 +6,15 @@
 class Reply
 {
 public:
-  QByteArray author;
-  QByteArray target;
-  uint       code;
-  QByteArray type;
-  QByteArray params;
+  Reply                         (QByteArray&);
 
-  Reply(QByteArray&);
-  bool isSlap() const;
+  bool isSlap                   () const;
+
+  QByteArray                    author;
+  QByteArray                    target;
+  uint                          code;
+  QByteArray                    type;
+  QByteArray                    params;
 };
 
 #endif

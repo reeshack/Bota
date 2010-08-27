@@ -114,16 +114,6 @@ Quote::Quote(const QByteArray& value, const uint& score, const uint& id) : value
 {
 }
 
-bool Quote::operator < (const Quote& other) const
-{
-  return other.score < score;
-}
-
-bool operator >= (const Quote& one, const Quote& other)
-{
-  return other.score >= one.score;
-}
-
 uint Quote::lines()
 {
   int lastIndex = -5;
@@ -136,4 +126,14 @@ uint Quote::lines()
     else
       return count + 1;
   }
+}
+
+bool Quote::operator < (const Quote& other) const
+{
+  return other.score < score;
+}
+
+bool operator >= (const Quote& one, const Quote& other)
+{
+  return other.score >= one.score;
 }

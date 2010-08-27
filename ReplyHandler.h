@@ -6,7 +6,7 @@
 class ReplyHandler
 {
 public:
-  static void handle(QByteArray&);
+  static void handle            (QByteArray&);
 };
 
 #endif

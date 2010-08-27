@@ -9,20 +9,19 @@ class Input : public QThread
 {
   Q_OBJECT
 
-private:
-  QTextStream* m_stream;
-
-  void handleUserCommand(QString&);
+public:
+  Input                         ();
+  ~Input                        ();
 
 protected:
-  void run();
+  void handleUserCommand        (QString&);
+  void run                      ();
 
-private slots:
-  void readInput();
+protected slots:
+  void readInput                ();
 
-public:
-  Input();
-  ~Input();
+protected:
+  QTextStream*                  m_stream;
 };
 
 #endif

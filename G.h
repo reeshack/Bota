@@ -10,12 +10,12 @@
 // Global variables:
 struct G
 {
-  static Connection* con;
-  static Input*      in;
-  static Output*     out;
-  static QString     server;
-  static QByteArray  nick;
-  static QByteArray  channel;
+  static Connection*            con;
+  static Input*                 in;
+  static Output*                out;
+  static QString                server;
+  static QByteArray             nick;
+  static QByteArray             channel;
 };
 
 #endif

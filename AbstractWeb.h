@@ -11,21 +11,22 @@ class AbstractWeb : public QObject
 {
   Q_OBJECT
 
-protected:
-  QNetworkAccessManager* m_manager;
-  QString      m_address;
-  QByteArray   m_sender;
-  static uint  m_time;
-
-  void start();
-  uint now();
-
 public:
-  AbstractWeb(const QString&, const QByteArray&);
-  ~AbstractWeb();
+  AbstractWeb                   (const QString&, const QByteArray&);
+  ~AbstractWeb                  ();
+
+protected:
+  uint now                      ();
+  void start                    ();
 
 protected slots:
-  virtual void replyFinished(QNetworkReply*) = 0;
+  virtual void replyFinished    (QNetworkReply*) = 0;
+
+protected:
+  QNetworkAccessManager*        m_manager;
+  QString                       m_address;
+  QByteArray                    m_sender;
+  static uint                   m_time;
 };
 
 #endif

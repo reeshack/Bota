@@ -6,4 +6,4 @@ Output*     G::out = NULL;
 
 QString     G::server  = "irc.mmoirc.com";
 QByteArray  G::nick    = "bashoid";
-QByteArray  G::channel = "#abraka";          // autojoin to this channel
+QByteArray  G::channel = "#valhalla";          // autojoin to this channel

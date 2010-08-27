@@ -7,30 +7,24 @@
 
 class Output : public QObject
 {
-  // TODO potreba?
   Q_OBJECT
 
 public:
-  enum TYPE {
-    COMMON,
-    ERROR,
-    READ,
-    SEND
-  };
+  enum TYPE                     { COMMON, ERROR, READ, SEND };
 
-private:
-  QTextStream* m_stream;
+  Output                        (QObject* = 0);
+  ~Output                       ();
 
-public:
-  Output(QObject* = 0);
-  ~Output();
-  void display(QString, TYPE = COMMON);
+  void display                  (QString, TYPE = COMMON);
 
 signals:
-  void readyDisplay(const QString&);
+  void readyDisplay             (const QString&);
 
 public slots:
-  void displayData(const QString&);
+  void displayData              (const QString&);
+
+protected:
+  QTextStream*                  m_stream;
 };
 
 #endif

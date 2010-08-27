@@ -12,16 +12,6 @@ Input::~Input()
   delete m_stream;
 }
 
-void Input::run()
-{
-  QTimer timer;
-
-  connect(&timer, SIGNAL( timeout() ), this, SLOT( readInput() ), Qt::DirectConnection);
-  timer.start(100);
-
-  exec();
-}
-
 void Input::handleUserCommand(QString& cmd)
 {
   cmd = cmd.mid(1);
@@ -47,6 +37,15 @@ void Input::handleUserCommand(QString& cmd)
       G::con->send(msg);
     }
   }
+}
+
+void Input::run()
+{
+  QTimer timer;
+  connect(&timer, SIGNAL( timeout() ), this, SLOT( readInput() ), Qt::DirectConnection);
+  timer.start(100);
+
+  exec();
 }
 
 void Input::readInput()
