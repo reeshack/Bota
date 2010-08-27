@@ -12,7 +12,7 @@ class Output : public QObject
 public:
   enum TYPE                     { COMMON, ERROR, READ, SEND };
 
-  Output                        (QObject* = 0);
+  Output                        ();
   ~Output                       ();
 
   void display                  (QString, TYPE = COMMON);

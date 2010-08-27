@@ -1,6 +1,6 @@
 #include "G.h"
 
-Output::Output(QObject* parent) : QObject(parent)
+Output::Output()
 {
   m_stream = new QTextStream(stdout, QIODevice::WriteOnly);
 

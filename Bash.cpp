@@ -114,7 +114,7 @@ Quote::Quote(const QByteArray& value, const uint& score, const uint& id) : value
 {
 }
 
-uint Quote::lines()
+uint Quote::lines() const
 {
   int lastIndex = -5;
   uint count = 0;

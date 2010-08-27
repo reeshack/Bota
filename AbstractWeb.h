@@ -16,7 +16,7 @@ public:
   ~AbstractWeb                  ();
 
 protected:
-  uint now                      ();
+  uint now                      () const;
   void start                    ();
 
 protected slots:

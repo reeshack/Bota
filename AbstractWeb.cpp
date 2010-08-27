@@ -15,7 +15,7 @@ AbstractWeb::~AbstractWeb()
   delete m_manager;
 }
 
-uint AbstractWeb::now()
+uint AbstractWeb::now() const
 {
   return QDateTime::currentDateTime().toTime_t();
 }

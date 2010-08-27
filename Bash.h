@@ -21,7 +21,7 @@ class Quote
 public:
   Quote                         (const QByteArray&, const uint&, const uint&);
 
-  uint lines                    ();
+  uint lines                    () const;
   bool operator <               (const Quote&) const;
   friend bool operator >=       (const Quote&, const Quote&);
 
