@@ -5,9 +5,11 @@
 
 class Reply
 {
-public:
-  Reply                         (QByteArray&);
+private:
+  Reply                         (QByteArray);
 
+public:
+  static void handle            (const QByteArray&);
   bool isSlap                   () const;
 
   QByteArray                    author;

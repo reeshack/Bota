@@ -1,5 +1,5 @@
 #include "G.h"
-#include "ReplyHandler.h"
+#include "Reply.h"
 #include <QCoreApplication>
 #include <QList>
 
@@ -41,7 +41,7 @@ void Connection::load()
   for (i = replies.begin(); i != replies.end(); ++i) {
     *i = i->trimmed();
     if(i->length()) {
-      ReplyHandler::handle(*i);
+      Reply::handle(*i);
     }
   }
 }

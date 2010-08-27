@@ -235,10 +235,6 @@
 				RelativePath="Reply.cpp"
 				>
 			</File>
-			<File
-				RelativePath="ReplyHandler.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -361,28 +357,12 @@
 				RelativePath="Reply.h"
 				>
 			</File>
-			<File
-				RelativePath="ReplyHandler.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Generated Files"
 			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
 			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
 			>
-			<File
-				RelativePath="release\moc_AbstractWeb.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
 			<File
 				RelativePath="debug\moc_AbstractWeb.cpp"
 				>
@@ -396,7 +376,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\moc_Connection.cpp"
+				RelativePath="release\moc_AbstractWeb.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -420,7 +400,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\moc_Input.cpp"
+				RelativePath="release\moc_Connection.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -444,7 +424,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\moc_Output.cpp"
+				RelativePath="release\moc_Input.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -460,6 +440,18 @@
 				>
 				<FileConfiguration
 					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="release\moc_Output.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
