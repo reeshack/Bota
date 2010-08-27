@@ -4,8 +4,8 @@
 	Version="9,00"
 	Name="Bota"
 	ProjectGUID="{347A2DC7-DCCF-4097-BE1A-38D33F42B1C1}"
-	RootNamespace="Bota"
-	TargetFrameworkVersion="196613"
+	Keyword="Qt4VSv1.0"
+	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -17,10 +17,11 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="."
+			IntermediateDirectory="debug\"
 			ConfigurationType="1"
-			CharacterSet="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -36,30 +37,50 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
+				Optimization="4"
+				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;"
+				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
 				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="debug\"
+				ObjectFile="debug\"
+				ProgramDataBaseFileName=".\"
 				WarningLevel="3"
-				DebugInformationFormat="4"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,_DEBUG"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(QTDIR)\lib\QtCore4.lib $(QTDIR)\lib\QtGui4.lib $(QTDIR)\lib\QtNetwork4.lib"
+				IgnoreImportLibrary="true"
+				AdditionalDependencies="$(QTDIR)\lib\QtGuid4.lib $(QTDIR)\lib\QtCored4.lib $(QTDIR)\lib\QtNetworkd4.lib"
+				OutputFile="debug\Bota.exe"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="$(QTDIR)\lib"
 				GenerateDebugInformation="true"
-				TargetMachine="1"
+				ProgramDatabaseFile=""
+				SubSystem="1"
+				LinkTimeCodeGeneration="0"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -85,11 +106,11 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="."
+			IntermediateDirectory="release\"
 			ConfigurationType="1"
-			CharacterSet="2"
-			WholeProgramOptimization="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -105,32 +126,51 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="2"
-				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT,NDEBUG"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
 				RuntimeLibrary="2"
-				EnableFunctionLevelLinking="true"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="release\"
+				ObjectFile="release\"
+				ProgramDataBaseFileName=".\"
 				WarningLevel="3"
-				DebugInformationFormat="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_GUI_LIB,QT_CORE_LIB,QT_THREAD_SUPPORT"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(QTDIR)\lib\QtCore4.lib $(QTDIR)\lib\QtGui4.lib $(QTDIR)\lib\QtNetwork4.lib"
-				GenerateDebugInformation="true"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"
+				IgnoreImportLibrary="true"
+				AdditionalDependencies="$(QTDIR)\lib\QtGui4.lib $(QTDIR)\lib\QtCore4.lib $(QTDIR)\lib\QtNetwork4.lib"
+				OutputFile="release\Bota.exe"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="$(QTDIR)\lib"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
+				SubSystem="1"
+				LinkTimeCodeGeneration="0"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -160,45 +200,45 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\AbstractWeb.cpp"
+				RelativePath="AbstractWeb.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Connection.cpp"
+				RelativePath="Bash.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\G.cpp"
+				RelativePath="Connection.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\IO.cpp"
+				RelativePath="G.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\main.cpp"
+				RelativePath="Input.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Reply.cpp"
+				RelativePath="main.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ReplyHandler.cpp"
+				RelativePath="Output.cpp"
 				>
 			</File>
-			<Filter
-				Name="Web"
+			<File
+				RelativePath="Reply.cpp"
 				>
-				<File
-					RelativePath=".\Bash.cpp"
-					>
-				</File>
-			</Filter>
+			</File>
+			<File
+				RelativePath="ReplyHandler.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -206,17 +246,17 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\AbstractWeb.h"
+				RelativePath="AbstractWeb.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing AbstractWeb.h"
-						CommandLine="$(QTDIR)\bin\moc.exe AbstractWeb.h -o tmp\moc_AbstractWeb.cpp&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_AbstractWeb.cpp"
+						Description="MOC AbstractWeb.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;debug&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 AbstractWeb.h -o debug\moc_AbstractWeb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="AbstractWeb.h;$(QTDIR)\bin\moc.exe"
+						Outputs="debug\moc_AbstractWeb.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -224,25 +264,29 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing AbstractWeb.h"
-						CommandLine="$(QTDIR)\bin\moc.exe AbstractWeb.h -o tmp\moc_AbstractWeb.cpp"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_AbstractWeb.cpp"
+						Description="MOC AbstractWeb.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;release&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 AbstractWeb.h -o release\moc_AbstractWeb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="AbstractWeb.h;$(QTDIR)\bin\moc.exe"
+						Outputs="release\moc_AbstractWeb.cpp"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Connection.h"
+				RelativePath="Bash.h"
+				>
+			</File>
+			<File
+				RelativePath="Connection.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing Connection.h"
-						CommandLine="$(QTDIR)\bin\moc.exe Connection.h -o tmp\moc_Connection.cpp&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_Connection.cpp"
+						Description="MOC Connection.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;debug&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Connection.h -o debug\moc_Connection.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="Connection.h;$(QTDIR)\bin\moc.exe"
+						Outputs="debug\moc_Connection.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -250,29 +294,29 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing Connection.h"
-						CommandLine="$(QTDIR)\bin\moc.exe Connection.h -o tmp\moc_Connection.cpp"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_Connection.cpp"
+						Description="MOC Connection.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;release&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Connection.h -o release\moc_Connection.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="Connection.h;$(QTDIR)\bin\moc.exe"
+						Outputs="release\moc_Connection.cpp"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\G.h"
+				RelativePath="G.h"
 				>
 			</File>
 			<File
-				RelativePath=".\IO.h"
+				RelativePath="Input.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing IO.h"
-						CommandLine="$(QTDIR)\bin\moc.exe IO.h -o tmp\moc_IO.cpp&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_IO.cpp"
+						Description="MOC Input.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;debug&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Input.h -o debug\moc_Input.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;Input.h"
+						Outputs="debug\moc_Input.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -280,46 +324,148 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing IO.h"
-						CommandLine="$(QTDIR)\bin\moc.exe IO.h -o tmp\moc_IO.cpp"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
-						Outputs="tmp\moc_IO.cpp"
+						Description="MOC Input.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;release&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Input.h -o release\moc_Input.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;Input.h"
+						Outputs="release\moc_Input.cpp"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Reply.h"
+				RelativePath="Output.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC Output.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;debug&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Output.h -o debug\moc_Output.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;Output.h"
+						Outputs="debug\moc_Output.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="MOC Output.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;.&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;release&quot; -I$(QTDIR)\mkspecs\default -D_MSC_VER=1500 -DWIN32 Output.h -o release\moc_Output.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;Output.h"
+						Outputs="release\moc_Output.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Reply.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ReplyHandler.h"
+				RelativePath="ReplyHandler.h"
 				>
 			</File>
-			<Filter
-				Name="Web"
-				>
-				<File
-					RelativePath=".\Bash.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
-			Name="Moc"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			Name="Generated Files"
+			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
 			>
 			<File
-				RelativePath=".\tmp\moc_AbstractWeb.cpp"
+				RelativePath="release\moc_AbstractWeb.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\tmp\moc_Connection.cpp"
+				RelativePath="debug\moc_AbstractWeb.cpp"
 				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\tmp\moc_IO.cpp"
+				RelativePath="release\moc_Connection.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="debug\moc_Connection.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="release\moc_Input.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="debug\moc_Input.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="release\moc_Output.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="debug\moc_Output.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 	</Files>

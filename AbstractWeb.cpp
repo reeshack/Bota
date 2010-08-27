@@ -1,6 +1,6 @@
 #include "AbstractWeb.h"
 #include "G.h"
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 uint AbstractWeb::m_time = 0;
 

@@ -1,11 +1,11 @@
 #ifndef ABSTRACT_WEB_H
 #define ABSTRACT_WEB_H
 
-#include <QtCore/QByteArray>
-#include <QtCore/QString>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
+#include <QByteArray>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QString>
 
 class AbstractWeb : public QObject
 {

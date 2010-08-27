@@ -1,6 +1,7 @@
 #include "G.h"
 #include "ReplyHandler.h"
-#include <QtCore/QList>
+#include <QCoreApplication>
+#include <QList>
 
 Connection::Connection(const QString& server, const quint16& port) : m_server(server), m_port(port)
 {
@@ -10,39 +11,25 @@ Connection::Connection(const QString& server, const quint16& port) : m_server(se
   connect(m_socket, SIGNAL( disconnected() ), SLOT( quit() ));
   connect(m_socket, SIGNAL( error(QAbstractSocket::SocketError) ), SLOT( errorOccured(QAbstractSocket::SocketError) ));
   connect(m_socket, SIGNAL( readyRead() ),    SLOT( load() ));
+  connect(this,     SIGNAL( readySend(const QByteArray&) ), SLOT( sendData(const QByteArray&) ));
 
-  connect(this,     SIGNAL( finished() ),     SLOT( dying() ));
+  m_socket->connectToHost(m_server, m_port);
+  G::out->display("Connecting to " + m_server + "...", Output::SEND);
 }
 
 Connection::~Connection()
 {
   delete m_socket;
-  G::gui->display("The Connection object has been deallocated.");
-}
-
-void Connection::run()
-{
-  // Make a connection
-  m_socket->connectToHost(m_server, m_port);
-  G::gui->display("Connecting to " + m_server + "...");
-  exec();
 }
 
 void Connection::send(const QByteArray& data)
 {
-  m_socket->write(data + "\r\n");
-  m_socket->flush();
-  G::gui->display(data, IO::SEND);
+  emit readySend(data);
 }
 
-void Connection::dying()
+void Connection::errorOccured(QAbstractSocket::SocketError)
 {
-  G::gui->display("Exiting the Connection thread.");
-}
-
-void Connection::errorOccured(QAbstractSocket::SocketError error)
-{
-  G::gui->display( m_socket->errorString() , IO::ERROR);
+  G::out->display( m_socket->errorString(), Output::ERROR);
 }
 
 void Connection::load()
@@ -53,17 +40,15 @@ void Connection::load()
 
   for (i = replies.begin(); i != replies.end(); ++i) {
     *i = i->trimmed();
-    if(!i->length())
-      continue;
-
-    G::gui->display(*i, IO::READ);
-    ReplyHandler::handle(*i);
+    if(i->length()) {
+      ReplyHandler::handle(*i);
+    }
   }
 }
 
 void Connection::login()
 {
-  G::gui->display("Connected.");
+  G::out->display("Connected. Authorization process started.", Output::SEND);
   QByteArray data;
   data.append("PASS nopass\r\n");
   data.append("NICK " + G::nick + "\r\n");
@@ -71,8 +56,16 @@ void Connection::login()
   send(data);
 }
 
+void Connection::sendData(const QByteArray& data)
+{
+  m_socket->write(data + "\r\n");
+  m_socket->flush();
+}
+
 void Connection::quit()
 {
-  G::gui->display("Disconnected.");
+  G::out->display("Disconnected.", Output::READ);
   m_socket->close();
+
+  QCoreApplication::exit();
 }

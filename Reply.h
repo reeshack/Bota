@@ -1,7 +1,7 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include <QtCore/QByteArray>
+#include <QByteArray>
 
 class Reply
 {

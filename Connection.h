@@ -1,12 +1,12 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-#include <QtCore/QByteArray>
-#include <QtCore/QString>
-#include <QtCore/QThread>
-#include <QtNetwork/QTcpSocket>
+#include <QByteArray>
+#include <QObject>
+#include <QString>
+#include <QTcpSocket>
 
-class Connection : public QThread
+class Connection : public QObject
 {
   Q_OBJECT
 
@@ -24,11 +24,14 @@ public:
 
   void send(const QByteArray&);
 
+signals:
+  void readySend(const QByteArray&);
+
 private slots:
-  void dying();
   void errorOccured(QAbstractSocket::SocketError);
   void load();
   void login();
+  void sendData(const QByteArray&);
   void quit();
 };
 

@@ -1,9 +1,9 @@
 #include "G.h"
 #include "Reply.h"
-#include <QtCore/QString>
+#include <QString>
 
 // http://www.irchelp.org/irchelp/rfc/chapter2.html#c2_3_1
-Reply::Reply(QByteArray& msg) : code(0), params(NULL), target(NULL)
+Reply::Reply(QByteArray& msg) : code(0), target(NULL), params(NULL)
 {
   int upto;
 
@@ -50,11 +50,5 @@ Reply::Reply(QByteArray& msg) : code(0), params(NULL), target(NULL)
 
 bool Reply::isSlap() const
 {
-  if (type != "PRIVMSG")
-    return false;
-
-  QString slap = "ACTION slaps ";
-  slap.append(G::nick);
-  slap.append(" around a bit with a large trout");
-  return params.indexOf(slap) > -1;
+  return type == "PRIVMSG" && params.indexOf("ACTION slaps " + G::nick) > -1;
 }

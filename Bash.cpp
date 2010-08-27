@@ -1,7 +1,7 @@
 #include "Bash.h"
 #include "G.h"
-#include <QtCore/QDateTime>
-#include <QtCore/QList>
+#include <QDateTime>
+#include <QList>
 
 uint Bash::m_cooldown = 300;
 
@@ -16,11 +16,14 @@ Bash::Bash(const QByteArray& sender) : AbstractWeb("http://bash.org/?random1", s
     msg.append( future.toString("H:mm:ss") );
     msg.append(", coz je za ");
 
-    QString s;
-    msg.append( s.setNum(m_time - now() ) );
+    QString left;
+    left.setNum(m_time - now() );
+    msg.append( left );
 
     msg.append(" sekund.");
     G::con->send(msg);
+
+    G::out->display("BASH is on cooldown (" + m_sender + "). " + left + " seconds left.", Output::SEND);
 
     deleteLater();
 
@@ -102,6 +105,7 @@ void Bash::replyFinished(QNetworkReply* reply)
 
   // Output the link
   G::con->send("PRIVMSG " + G::channel + " :-- " + link + " --");
+  G::out->display("BASH has been sent (" + m_sender + ").", Output::SEND);
 
   deleteLater();
 }

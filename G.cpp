@@ -1,7 +1,9 @@
 #include "G.h"
 
 Connection* G::con = NULL;
-IO*         G::gui = NULL;
+Input*      G::in  = NULL;
+Output*     G::out = NULL;
 
-QByteArray  G::nick    = "bashoid";   // default nick
-QByteArray  G::channel = "#valhalla"; // autojoin to this channel
+QString     G::server  = "irc.mmoirc.com";
+QByteArray  G::nick    = "bashoid";
+QByteArray  G::channel = "#abraka";          // autojoin to this channel

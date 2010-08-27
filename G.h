@@ -2,14 +2,18 @@
 #define G_H
 
 #include "Connection.h"
-#include "IO.h"
-#include <QtCore/QByteArray>
+#include "Input.h"
+#include "Output.h"
+#include <QByteArray>
+#include <QString>
 
 // Global variables:
 struct G
 {
   static Connection* con;
-  static IO* gui;
+  static Input*      in;
+  static Output*     out;
+  static QString     server;
   static QByteArray  nick;
   static QByteArray  channel;
 };
