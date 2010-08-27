@@ -29,7 +29,7 @@ void ReplyHandler::handle(QByteArray& message)
       G::con->send(header + " - v posteli: sleep");
     }
 
-  } else if (reply.type == "NICK" && reply.params == G::nick) {
+  } else if (reply.type == "NICK" && reply.author == G::nick) {
 
     G::nick = reply.params;
     G::out->display("Nick has been changed to " + G::nick + ".", Output::READ);
