@@ -6,6 +6,7 @@
 Connection::Connection(const QString& server, const quint16& port) : m_server(server), m_port(port)
 {
   m_socket = new QTcpSocket(this);
+  m_display = false;
 
   connect(m_socket, SIGNAL( connected() ),    SLOT( login() ));
   connect(m_socket, SIGNAL( disconnected() ), SLOT( quit() ));
@@ -41,6 +42,9 @@ void Connection::load()
   for (i = replies.begin(); i != replies.end(); ++i) {
     *i = i->trimmed();
     if(i->length()) {
+      if(m_display) {
+        G::out->display(*i, Output::READ);
+      }
       Reply::handle(*i);
     }
   }

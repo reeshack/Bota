@@ -1,4 +1,4 @@
-#include "Bash.h"
+﻿#include "Bash.h"
 #include "G.h"
 #include <QTimer>
 
@@ -36,6 +36,18 @@ void Input::handleUserCommand(QString& cmd)
       msg.append(" sec.");
       G::con->send(msg);
     }
+  }
+  else if (cmd == "SLAP") {
+    QByteArray msg = "PRIVMSG " + G::channel + " :" + char(1) + "ACTION slaps " + param.toUtf8() + char(1);
+    G::con->send(msg);
+  }
+  else if (cmd == "STARTREAD") {
+    G::con->set_display(true);
+    G::out->display("Displaying messages enabled.", Output::READ);
+  }
+  else if (cmd == "STOPREAD") {
+    G::con->set_display(false);
+    G::out->display("Displaying messages disabled.", Output::READ);
   }
 }
 

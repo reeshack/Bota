@@ -15,6 +15,7 @@ public:
   ~Connection();
 
   void send                     (const QByteArray&);
+  void set_display (bool start) {m_display = start;};
 
 signals:
   void readySend                (const QByteArray&);
@@ -30,6 +31,7 @@ private:
   QTcpSocket*                   m_socket;
   QString                       m_server;
   quint16                       m_port;
+  bool                          m_display;
 };
 
 #endif
