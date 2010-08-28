@@ -32,6 +32,7 @@ protected:
   QTextStream*                  m_stream;
 
 private:
+  void sendInputText(QString& string);
   void SetReadWriteMods(uint read_mod, uint write_mod);
 
   bool m_writeMode;

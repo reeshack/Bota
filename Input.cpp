@@ -1,4 +1,4 @@
-﻿#include "Bash.h"
+#include "Bash.h"
 #include "G.h"
 #include <QTimer>
 
@@ -66,12 +66,12 @@ void Input::SetReadWriteMods(uint read_mod, uint write_mod)
 {
   if (read_mod == MOD_ENABLED)
   {
-    G::con->set_display(true);
+    G::con->setDisplay(true);
     G::out->display("Displaying messages enabled.", Output::READ);
   }
   else if (read_mod == MOD_DISABLED)
   {
-    G::con->set_display(false);
+    G::con->setDisplay(false);
     G::out->display("Displaying messages disabled.", Output::READ);
   }
 
@@ -85,6 +85,21 @@ void Input::SetReadWriteMods(uint read_mod, uint write_mod)
     m_writeMode = false;
     G::out->display("Write mod disabled.", Output::READ);
   }
+}
+
+void Input::sendInputText(QString& string)
+{
+  QByteArray msg;
+  // ACTION text handling
+  if (string.startsWith("/me ")) {
+    string = string.mid(4);
+    msg = "PRIVMSG " + G::channel + " :" + char(1) + "ACTION " + string.toUtf8() + char(1);
+  }
+  else {
+    msg = "PRIVMSG " + G::channel + " :" + string.toUtf8();
+  }
+
+  G::con->send(msg);
 }
 
 void Input::run()
@@ -108,8 +123,7 @@ void Input::readInput()
     handleUserCommand(text);
   }
   else if (m_writeMode) {
-  QByteArray msg = "PRIVMSG " + G::channel + " :" + text.toUtf8();
-  G::con->send(msg);
+    sendInputText(text);
   }
   else {
     G::con->send( text.toUtf8() );

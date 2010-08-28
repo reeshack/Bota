@@ -15,7 +15,7 @@ public:
   ~Connection();
 
   void send                     (const QByteArray&);
-  void set_display (bool start) {m_display = start;};
+  void setDisplay (bool start) {m_display = start;};
 
 signals:
   void readySend                (const QByteArray&);
