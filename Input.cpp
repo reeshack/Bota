@@ -5,6 +5,7 @@
 Input::Input()
 {
   m_stream  = new QTextStream(stdin, QIODevice::ReadOnly);
+  m_writeMode = false;
 }
 
 Input::~Input()
@@ -41,13 +42,48 @@ void Input::handleUserCommand(QString& cmd)
     QByteArray msg = "PRIVMSG " + G::channel + " :" + char(1) + "ACTION slaps " + param.toUtf8() + char(1);
     G::con->send(msg);
   }
-  else if (cmd == "STARTREAD") {
+  else if (cmd == "READMODON") {
+    SetReadWriteMods(MOD_ENABLED,MOD_NO);
+  }
+  else if (cmd == "READMODOFF") {
+    SetReadWriteMods(MOD_DISABLED,MOD_NO);
+  }
+  else if (cmd == "WRITEMODON") {
+    SetReadWriteMods(MOD_NO,MOD_ENABLED);
+  }
+  else if (cmd == "WRITEMODOFF") {
+    SetReadWriteMods(MOD_NO,MOD_DISABLED);
+  }
+  else if (cmd == "ALLMODSON") {
+    SetReadWriteMods(MOD_ENABLED,MOD_ENABLED);
+  }
+  else if (cmd == "ALLMODSOFF") {
+    SetReadWriteMods(MOD_DISABLED,MOD_DISABLED);
+  }
+}
+
+void Input::SetReadWriteMods(uint read_mod, uint write_mod)
+{
+  if (read_mod == MOD_ENABLED)
+  {
     G::con->set_display(true);
     G::out->display("Displaying messages enabled.", Output::READ);
   }
-  else if (cmd == "STOPREAD") {
+  else if (read_mod == MOD_DISABLED)
+  {
     G::con->set_display(false);
     G::out->display("Displaying messages disabled.", Output::READ);
+  }
+
+  if (write_mod == MOD_ENABLED)
+  {
+    m_writeMode = true;
+    G::out->display("Write mod enabled.", Output::READ);
+  }
+  else if (write_mod == MOD_DISABLED)
+  {
+    m_writeMode = false;
+    G::out->display("Write mod disabled.", Output::READ);
   }
 }
 
@@ -70,7 +106,12 @@ void Input::readInput()
 
   if ( text.startsWith('.') ) {
     handleUserCommand(text);
-  } else {
+  }
+  else if (m_writeMode) {
+  QByteArray msg = "PRIVMSG " + G::channel + " :" + text.toUtf8();
+  G::con->send(msg);
+  }
+  else {
     G::con->send( text.toUtf8() );
     G::out->display(text, Output::SEND);
   }
